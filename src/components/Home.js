@@ -13,7 +13,9 @@ const Home = () => {
   }
 
   return redirect ? (
-    <Redirect to={`/listings?location=${location}&types=${types}`} />
+    <Redirect
+      to={`/listings?location=${location.toLowerCase()}&types=${types}`}
+    />
   ) : (
     <div className="home">
       <div

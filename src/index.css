@@ -39,3 +39,48 @@ label {
 input {
   border-radius: 3px;
 }
+
+.listings {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  padding: 0 30px;
+}
+
+.listings a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.listing-title {
+  font-weight: 100;
+  margin: 0;
+}
+
+.listing-types {
+  color: #999;
+  margin: 0;
+}
+
+.listing-price p {
+  margin: 10px 0;
+}
+
+.listing-img {
+  width: 350px;
+  overflow: hidden;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: solid 1px #eee;
+}
+
+.listing-img img {
+  width: 350px;
+}
+
+.listing-rating {
+  text-align: center;
+  margin: 10px 0;
+}
