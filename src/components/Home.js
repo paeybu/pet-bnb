@@ -1,21 +1,20 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 import HomeHero from '../assets/home-hero.jpg'
 import moment from 'moment'
+
+import { DateRangePicker } from 'react-dates'
+import 'react-dates/initialize'
+import 'react-dates/lib/css/_datepicker.css'
 
 const Home = () => {
   const [location, setLocation] = useState('')
   const [types, setTypes] = useState('dogs')
   const [redirect, setRedirect] = useState(false)
-  const [checkIn, setCheckIn] = useState(moment().valueOf())
+  const [checkIn, setCheckIn] = useState(moment())
+  const [focused, setFocused] = useState(null)
   // Tomorrow
-  const [checkOut, setCheckOut] = useState(
-    moment()
-      .add(1, 'days')
-      .valueOf()
-  )
+  const [checkOut, setCheckOut] = useState(moment().add(1, 'days'))
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -56,22 +55,20 @@ const Home = () => {
               <option value="dogs">Dogs</option>
               <option value="cats">Cats</option>
             </select>
-            <div className="row">
-              <div className="check-in">
-                <label htmlFor="checkin">Check-in</label>
-                <DatePicker
-                  selected={checkIn}
-                  onChange={date => setCheckIn(date)}
-                />
-              </div>
-              <div className="check-out">
-                <label htmlFor="checkout">Check-out</label>
-                <DatePicker
-                  selected={checkOut}
-                  onChange={date => setCheckOut(date)}
-                />
-              </div>
-            </div>
+            <label htmlFor="check-in">Check-in</label>
+            <DateRangePicker
+              startDate={checkIn}
+              startDateId="check-in"
+              endDate={checkOut}
+              endDateId="check-out"
+              onDatesChange={({ startDate, endDate }) => {
+                setCheckIn(startDate)
+                setCheckOut(endDate)
+              }}
+              focusedInput={focused}
+              onFocusChange={focusedInput => setFocused(focusedInput)}
+            />
+
             <button className="btn btn-default" type="submit">
               Submit
             </button>

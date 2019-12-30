@@ -71,6 +71,7 @@ export const LISTINGS = [
 
 export const USERS = [
   {
+    id: 1,
     email: 'pkb@gmail.com',
     password: '123456',
     name: 'Pae Kabu'
@@ -83,5 +84,15 @@ export const HOST_USERS = [
     email: 'host@gmail.com',
     password: '123456',
     name: 'Jim Figger'
+  }
+]
+
+export const BOOKINGS = [
+  {
+    id: 1,
+    check_in: '2019-12-30',
+    check_out: '2019-12-31',
+    listing_id: 1,
+    user_id: 1
   }
 ]

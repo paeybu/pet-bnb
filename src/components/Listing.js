@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { LISTINGS } from '../utils/data'
-import DatePicker from 'react-datepicker'
 import queryString from 'query-string'
 import moment from 'moment'
-
-import 'react-datepicker/dist/react-datepicker.css'
+import { DateRangePicker } from 'react-dates'
+import 'react-dates/initialize'
+import 'react-dates/lib/css/_datepicker.css'
 
 const Listing = ({ match, location }) => {
   const id = Number(match.params.id)
@@ -12,13 +12,10 @@ const Listing = ({ match, location }) => {
   const queries = queryString.parse(search)
   const { check_in, check_out } = queries
 
-  const [checkIn, setCheckIn] = useState(moment().valueOf())
+  const [focused, setFocused] = useState(null)
+  const [checkIn, setCheckIn] = useState(moment())
   // Tomorrow
-  const [checkOut, setCheckOut] = useState(
-    moment()
-      .add(1, 'days')
-      .valueOf()
-  )
+  const [checkOut, setCheckOut] = useState(moment().add(1, 'days'))
 
   const [listing, setListing] = useState({})
 
@@ -38,8 +35,8 @@ const Listing = ({ match, location }) => {
       const month_out = Number(check_out.substr(5, 2)) - 1
       const day_out = check_out.substr(8, 2)
 
-      setCheckIn(new Date(year_in, month_in, day_in))
-      setCheckOut(new Date(year_out, month_out, day_out))
+      setCheckIn(moment(new Date(year_in, month_in, day_in)))
+      setCheckOut(moment(new Date(year_out, month_out, day_out)))
     }
   }
   return (
@@ -55,15 +52,21 @@ const Listing = ({ match, location }) => {
           <form>
             <p>฿{listing.price} per night</p>
             <p>{listing.rating}</p>
-            <label htmlFor="checkIn">Check-In</label>
-            <p>
-              <DatePicker selected={checkIn} />
-            </p>
-            <label htmlFor="checkOut">Check-out</label>
-            <p>
-              <DatePicker selected={checkOut} />
-            </p>
+
             <p>฿{listing.price} x 2 nights</p>
+            <label>Check-in check-out</label>
+            <DateRangePicker
+              startDate={checkIn}
+              startDateId="check-in"
+              endDate={checkOut}
+              endDateId="check-out"
+              onDatesChange={({ startDate, endDate }) => {
+                setCheckIn(startDate)
+                setCheckOut(endDate)
+              }}
+              focusedInput={focused}
+              onFocusChange={focusedInput => setFocused(focusedInput)}
+            />
             <button type="submit" className="btn btn-default">
               Reserve
             </button>
