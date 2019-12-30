@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .container {
-  width: 1140px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
 .full-height {
   min-height: 100vh;
-  background-size: cover;
 }
 
 .search {
@@ -19,6 +24,27 @@
   padding: 40px 30px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
   border-radius: 5px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.check-in,
+.check-out {
+  margin-top: 10px;
+}
+
+.check-in p,
+.check-out,
+p {
+  margin: 10px 0 0;
+}
+
+.search h1 {
+  color: rgb(72, 72, 72);
 }
 
 .btn.btn-default {
@@ -44,7 +70,8 @@ input {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  padding: 0 30px;
+  column-gap: 1em;
+  row-gap: 1em;
 }
 
 .listings a {
@@ -83,4 +110,33 @@ input {
 .listing-rating {
   text-align: center;
   margin: 10px 0;
+}
+
+.listing {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listing .info {
+  flex-basis: 70%;
+  overflow: hidden;
+}
+
+.listing .booking {
+  flex-basis: 30%;
+  padding: 10px 10px 10px 30px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.12);
+  margin: 30px 0 30px 0;
+}
+
+.listing .info img {
+  max-width: 100%;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
 }

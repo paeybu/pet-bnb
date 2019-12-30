@@ -67,3 +67,11 @@ export const LISTINGS = [
       'https://i.pinimg.com/originals/18/58/2c/18582c92c36cba45ef7c55ea3b623e04.jpg'
   }
 ]
+
+export const USERS = [
+  {
+    email: 'pkb@gmail.com',
+    password: 123456,
+    name: 'Pae Kabu'
+  }
+]
