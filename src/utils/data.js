@@ -6,7 +6,8 @@ export const LISTINGS = [
     types: 'dogs',
     rating: 4.9,
     price: 300,
-    img: 'http://www.pawsherepetresort.com/kennel_view_2.jpg'
+    img: 'http://www.pawsherepetresort.com/kennel_view_2.jpg',
+    host_id: 1
   },
   {
     id: 2,
@@ -71,7 +72,16 @@ export const LISTINGS = [
 export const USERS = [
   {
     email: 'pkb@gmail.com',
-    password: 123456,
+    password: '123456',
     name: 'Pae Kabu'
+  }
+]
+
+export const HOST_USERS = [
+  {
+    id: 1,
+    email: 'host@gmail.com',
+    password: '123456',
+    name: 'Jim Figger'
   }
 ]
